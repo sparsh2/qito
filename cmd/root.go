@@ -4,12 +4,17 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/sparsh2/pmgr/cmd/add"
+	"github.com/sparsh2/pmgr/cmd/copy"
+	"github.com/sparsh2/pmgr/cmd/list"
+	"github.com/sparsh2/pmgr/cmd/remove"
+	"github.com/sparsh2/pmgr/cmd/update"
 	"github.com/spf13/cobra"
 )
 
 var rootCmd = &cobra.Command{
 	Use:     "pmgr",
-	Short:   "Pmgr is a password manager tool",
+	Short:   "Pmgr is a password manager",
 	Version: "1.0.0",
 	Run: func(cmd *cobra.Command, args []string) {
 		// Do Stuff Here
@@ -26,4 +31,9 @@ func Execute() {
 
 func init() {
 	rootCmd.AddCommand(versionCmd)
+	rootCmd.AddCommand(add.AddCmd)
+	rootCmd.AddCommand(copy.CopyCmd)
+	rootCmd.AddCommand(list.ListCmd)
+	rootCmd.AddCommand(remove.RemoveCmd)
+	rootCmd.AddCommand(update.UpdateCmd)
 }
