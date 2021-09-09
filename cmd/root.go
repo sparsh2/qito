@@ -9,12 +9,13 @@ import (
 	"github.com/sparsh2/pmgr/cmd/list"
 	"github.com/sparsh2/pmgr/cmd/remove"
 	"github.com/sparsh2/pmgr/cmd/update"
+	"github.com/sparsh2/pmgr/common"
 	"github.com/spf13/cobra"
 )
 
 var rootCmd = &cobra.Command{
-	Use:     "pmgr",
-	Short:   "Pmgr is a password manager",
+	Use:     common.RootCommand,
+	Short:   fmt.Sprintf("%v is a password manager", common.RootCommand),
 	Version: "1.0.0",
 	Run: func(cmd *cobra.Command, args []string) {
 		// Do Stuff Here
