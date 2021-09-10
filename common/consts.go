@@ -1,7 +1,7 @@
 package common
 
 const (
-	RootCommand   = "pm"
+	RootCommand   = "psm"
 	AddCommand    = "add"
 	RemoveCommand = "rm"
 	ListCommand   = "lst"
