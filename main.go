@@ -1,7 +1,13 @@
 package main
 
-import "github.com/sparsh2/pmgr/cmd"
+import (
+	"fmt"
+
+	"github.com/sparsh2/pmgr/cmd"
+	"github.com/sparsh2/pmgr/common"
+)
 
 func main() {
+	fmt.Println(common.SecretKey)
 	cmd.Execute()
 }

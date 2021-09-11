@@ -6,7 +6,7 @@ test() {
 }
 
 build() {
-    go build -o ./target/psm
+    python3 ./build.py
 }
 
 test

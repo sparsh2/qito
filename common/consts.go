@@ -1,5 +1,6 @@
 package common
 
+// Commands
 const (
 	RootCommand   = "psm"
 	AddCommand    = "add"
@@ -8,3 +9,5 @@ const (
 	CopyCommand   = "cp"
 	UpdateCommand = "updt"
 )
+
+var SecretKey string
