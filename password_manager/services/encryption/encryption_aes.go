@@ -10,11 +10,11 @@ import (
 // currently, this doesn't work.
 // TODO: Migrate to AES encryption
 
-type AESEncryptionService struct {
+type EncryptionServiceAES struct {
 	aesCipher cipher.Block
 }
 
-func (e *AESEncryptionService) setPassphrase(passphrase string) error {
+func (e *EncryptionServiceAES) setPassphrase(passphrase string) error {
 	// get 32 bytes key by hashing passphrase
 	key := sha256.Sum256([]byte(passphrase))
 	c, err := aes.NewCipher(key[:])
@@ -26,7 +26,7 @@ func (e *AESEncryptionService) setPassphrase(passphrase string) error {
 	return nil
 }
 
-func (e *AESEncryptionService) encrypt(bytes []byte) ([]byte, error) {
+func (e *EncryptionServiceAES) encrypt(bytes []byte) ([]byte, error) {
 	if e.aesCipher == nil {
 		return nil, fmt.Errorf("AES cipher not set")
 	}
@@ -36,7 +36,7 @@ func (e *AESEncryptionService) encrypt(bytes []byte) ([]byte, error) {
 	return out, nil
 }
 
-func (e *AESEncryptionService) decrypt(bytes []byte) ([]byte, error) {
+func (e *EncryptionServiceAES) decrypt(bytes []byte) ([]byte, error) {
 	if e.aesCipher == nil {
 		return nil, fmt.Errorf("AES cipher not set")
 	}
