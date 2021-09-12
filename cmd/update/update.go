@@ -4,15 +4,24 @@ import (
 	"fmt"
 
 	"github.com/sparsh2/pmgr/common"
+	passwordmanager "github.com/sparsh2/pmgr/password_manager"
 	"github.com/spf13/cobra"
 )
 
 var UpdateCmd = &cobra.Command{
 	Use:   common.UpdateCommand,
 	Short: fmt.Sprintf("%v is used to update a key-password pair", common.UpdateCommand),
-	Run:   updateCommand,
+	RunE:  updateCommand,
 }
 
-func updateCommand(cmd *cobra.Command, args []string) {
-	fmt.Println(args)
+func updateCommand(cmd *cobra.Command, args []string) error {
+	if len(args) != 2 {
+		return fmt.Errorf("insufficient arguments")
+	}
+	err := passwordmanager.PswManager.Update(args[0], args[1])
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

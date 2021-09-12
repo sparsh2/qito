@@ -10,6 +10,7 @@ import (
 	"github.com/sparsh2/pmgr/cmd/remove"
 	"github.com/sparsh2/pmgr/cmd/update"
 	"github.com/sparsh2/pmgr/common"
+	passwordmanager "github.com/sparsh2/pmgr/password_manager"
 	"github.com/spf13/cobra"
 )
 
@@ -18,8 +19,6 @@ var rootCmd = &cobra.Command{
 	Short:   fmt.Sprintf("%v is a password manager", common.RootCommand),
 	Version: "1.0.0",
 	Run: func(cmd *cobra.Command, args []string) {
-		// Do Stuff Here
-		fmt.Println("Hello world!")
 	},
 }
 
@@ -37,4 +36,6 @@ func init() {
 	rootCmd.AddCommand(list.ListCmd)
 	rootCmd.AddCommand(remove.RemoveCmd)
 	rootCmd.AddCommand(update.UpdateCmd)
+
+	passwordmanager.PswManager = passwordmanager.NewPasswordManager(common.SecretKey)
 }

@@ -10,4 +10,5 @@ const (
 	UpdateCommand = "updt"
 )
 
-var SecretKey string
+var SecretKey string = "rere"
+var SecretFilepath string = "/home/sparsh/.psw/psw.txt"

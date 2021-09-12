@@ -3,6 +3,9 @@ package storage
 import (
 	"fmt"
 	"os"
+	"os/user"
+	"path/filepath"
+	"strings"
 
 	"github.com/sparsh2/pmgr/password_manager/services/storage/encryption"
 	"github.com/sparsh2/pmgr/password_manager/services/storage/parser"
@@ -18,7 +21,7 @@ func GetNewStorageService(passphrase string, filepath string) *StorageService {
 	return &StorageService{
 		EncryptionService: encryption.GetNewEncryptionServiceXOR(passphrase),
 		ParserService:     parser.GetNewParserServiceJSON(),
-		Filepath:          filepath,
+		Filepath:          expandPath(filepath),
 	}
 }
 
@@ -30,6 +33,9 @@ func (s *StorageService) SetFilepath(filepath string) error {
 
 func (s *StorageService) Read() (map[string]interface{}, error) {
 	rawData, err := os.ReadFile(s.Filepath)
+	if len(rawData) == 0 {
+		return map[string]interface{}{}, nil
+	}
 	if err != nil {
 		return nil, fmt.Errorf("could not read file: %v", err.Error())
 	}
@@ -64,4 +70,18 @@ func (s *StorageService) Save(data map[string]interface{}) error {
 	}
 
 	return nil
+}
+
+func expandPath(path string) string {
+	usr, _ := user.Current()
+	dir := usr.HomeDir
+	if path == "~" {
+		// In case of "~", which won't be caught by the "else if"
+		path = dir
+	} else if strings.HasPrefix(path, "~/") {
+		// Use strings.HasPrefix so we don't match paths like
+		// "/something/~/something/"
+		path = filepath.Join(dir, path[2:])
+	}
+	return path
 }
