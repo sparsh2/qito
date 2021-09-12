@@ -3,9 +3,9 @@ package add
 import (
 	"fmt"
 
-	"github.com/sparsh2/pmgr/common"
-	passwordmanager "github.com/sparsh2/pmgr/password_manager"
-	passwordgenerator "github.com/sparsh2/pmgr/password_manager/services/password_generator"
+	"github.com/sparsh2/qito/common"
+	passwordmanager "github.com/sparsh2/qito/password_manager"
+	passwordgenerator "github.com/sparsh2/qito/password_manager/services/password_generator"
 	"github.com/spf13/cobra"
 )
 

@@ -1,10 +1,10 @@
 package passwordmanager
 
 import (
-	"github.com/sparsh2/pmgr/common"
-	"github.com/sparsh2/pmgr/password_manager/services/clipboard"
-	passwordgenerator "github.com/sparsh2/pmgr/password_manager/services/password_generator"
-	"github.com/sparsh2/pmgr/password_manager/services/storage"
+	"github.com/sparsh2/qito/common"
+	"github.com/sparsh2/qito/password_manager/services/clipboard"
+	passwordgenerator "github.com/sparsh2/qito/password_manager/services/password_generator"
+	"github.com/sparsh2/qito/password_manager/services/storage"
 )
 
 var PswManager IPasswordManager

@@ -4,10 +4,10 @@ package common
 const (
 	RootCommand   = "psm"
 	AddCommand    = "add"
-	RemoveCommand = "rm"
-	ListCommand   = "ls"
-	CopyCommand   = "cp"
-	UpdateCommand = "up"
+	RemoveCommand = "remove"
+	ListCommand   = "list"
+	CopyCommand   = "copy"
+	UpdateCommand = "update"
 )
 
 var SecretKey string

@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/sparsh2/pmgr/cmd/add"
-	"github.com/sparsh2/pmgr/cmd/copy"
-	"github.com/sparsh2/pmgr/cmd/list"
-	"github.com/sparsh2/pmgr/cmd/remove"
-	"github.com/sparsh2/pmgr/cmd/update"
-	"github.com/sparsh2/pmgr/common"
-	passwordmanager "github.com/sparsh2/pmgr/password_manager"
+	"github.com/sparsh2/qito/cmd/add"
+	"github.com/sparsh2/qito/cmd/copy"
+	"github.com/sparsh2/qito/cmd/list"
+	"github.com/sparsh2/qito/cmd/remove"
+	"github.com/sparsh2/qito/cmd/update"
+	"github.com/sparsh2/qito/common"
+	passwordmanager "github.com/sparsh2/qito/password_manager"
 	"github.com/spf13/cobra"
 )
 

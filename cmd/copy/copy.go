@@ -3,8 +3,8 @@ package copy
 import (
 	"fmt"
 
-	"github.com/sparsh2/pmgr/common"
-	passwordmanager "github.com/sparsh2/pmgr/password_manager"
+	"github.com/sparsh2/qito/common"
+	passwordmanager "github.com/sparsh2/qito/password_manager"
 	"github.com/spf13/cobra"
 )
 

@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/sparsh2/pmgr/password_manager/services/storage/encryption"
-	"github.com/sparsh2/pmgr/password_manager/services/storage/parser"
+	"github.com/sparsh2/qito/password_manager/services/storage/encryption"
+	"github.com/sparsh2/qito/password_manager/services/storage/parser"
 )
 
 type StorageService struct {

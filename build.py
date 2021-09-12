@@ -6,10 +6,10 @@ chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#%&()*+-
 
 password = ''.join(random.choice(chars) for i in range(12))
 
-target = "target/psm"
+target = "target/qito"
 
-filepath = "~/.pmgr.key"
-tmp = input("enter secret file path[~/.pmgr.key]: ")
+filepath = "~/.qito.psm"
+tmp = input("enter secret file path[~/.qito.psm]: ")
 if tmp != "":
 	filepath = tmp
 
@@ -18,9 +18,9 @@ if os.system("> " + filepath):
 	sys.exit()
 
 go_build_command = (
-    "go build -ldflags \"-X 'github.com/sparsh2/pmgr/common.SecretKey="
+    "go build -ldflags \"-X 'github.com/sparsh2/qito/common.SecretKey="
     + password
-    + "' -X 'github.com/sparsh2/pmgr/common.SecretFilepath="
+    + "' -X 'github.com/sparsh2/qito/common.SecretFilepath="
 		+ filepath
 		+ "'\""
     + " -o "

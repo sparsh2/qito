@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/sparsh2/pmgr/cmd"
+	"github.com/sparsh2/qito/cmd"
 )
 
 func main() {
