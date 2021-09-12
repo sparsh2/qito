@@ -44,9 +44,9 @@ func TestEncryptionXOR_encrypt(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			e := &EncryptionServiceXOR{
-				passphrase: tt.fields.passphrase,
+				Passphrase: tt.fields.passphrase,
 			}
-			got, err := e.encrypt(tt.args.bytes)
+			got, err := e.Encrypt(tt.args.bytes)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("EncryptionXOR.encrypt() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -97,9 +97,9 @@ func TestEncryptionServiceXOR_decrypt(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			e := &EncryptionServiceXOR{
-				passphrase: tt.fields.passphrase,
+				Passphrase: tt.fields.passphrase,
 			}
-			got, err := e.decrypt(tt.args.bytes)
+			got, err := e.Decrypt(tt.args.bytes)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("EncryptionServiceXOR.decrypt() error = %v, wantErr %v", err, tt.wantErr)
 				return
