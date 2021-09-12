@@ -6,7 +6,7 @@ type EncryptionServiceXOR struct {
 	Passphrase string
 }
 
-func GetNewEncryptionServiceXOR(passphrase string) *EncryptionServiceXOR {
+func NewEncryptionServiceXOR(passphrase string) *EncryptionServiceXOR {
 	return &EncryptionServiceXOR{
 		Passphrase: passphrase,
 	}

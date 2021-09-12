@@ -8,7 +8,7 @@ import (
 type ParserServiceJSON struct {
 }
 
-func GetNewParserServiceJSON() *ParserServiceJSON {
+func NewParserServiceJSON() *ParserServiceJSON {
 	return &ParserServiceJSON{}
 }
 

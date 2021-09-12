@@ -18,9 +18,13 @@ func listCommand(cmd *cobra.Command, args []string) error {
 	if len(args) != 0 {
 		return fmt.Errorf("insufficient arguments")
 	}
-	err := passwordmanager.PswManager.List()
+	list, err := passwordmanager.PswManager.List()
 	if err != nil {
 		return err
+	}
+
+	for _, key := range list {
+		fmt.Println(key)
 	}
 
 	return nil

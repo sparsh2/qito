@@ -1,31 +1,36 @@
 package passwordmanager
 
 import (
-	"fmt"
-
 	"github.com/sparsh2/pmgr/common"
 	"github.com/sparsh2/pmgr/password_manager/services/clipboard"
+	passwordgenerator "github.com/sparsh2/pmgr/password_manager/services/password_generator"
 	"github.com/sparsh2/pmgr/password_manager/services/storage"
 )
 
 var PswManager IPasswordManager
 
 type PasswordManager struct {
-	StorageService   storage.IStorageService
-	ClipboardService clipboard.IClipboardService
+	StorageService    storage.IStorageService
+	ClipboardService  clipboard.IClipboardService
+	PasswordGenerator passwordgenerator.IPasswordGeneratorService
 }
 
 func NewPasswordManager(passpharse string) *PasswordManager {
 	return &PasswordManager{
-		StorageService:   storage.GetNewStorageService(passpharse, common.SecretFilepath),
-		ClipboardService: clipboard.NewClipboardService(),
+		StorageService:    storage.NewStorageService(passpharse, common.SecretFilepath),
+		ClipboardService:  clipboard.NewClipboardService(),
+		PasswordGenerator: passwordgenerator.NewPasswordGeneratorService(),
 	}
 }
 
-func (p *PasswordManager) Add(entity string, password string) error {
+func (p *PasswordManager) Add(entity string, password string, options passwordgenerator.PasswordOptions) error {
 	passwordList, err := p.StorageService.Read()
 	if err != nil {
 		return err
+	}
+
+	if password == "" {
+		password = p.PasswordGenerator.Generate(options)
 	}
 
 	passwordList[entity] = password
@@ -52,17 +57,19 @@ func (p *PasswordManager) Copy(entity string) error {
 	return nil
 }
 
-func (p *PasswordManager) List() error {
+func (p *PasswordManager) List() ([]string, error) {
 	passwordList, err := p.StorageService.Read()
 	if err != nil {
-		return err
+		return nil, err
 	}
+
+	entityList := []string{}
 
 	for key := range passwordList {
-		fmt.Println(key)
+		entityList = append(entityList, key)
 	}
 
-	return nil
+	return entityList, err
 }
 
 func (p *PasswordManager) Remove(entity string) error {

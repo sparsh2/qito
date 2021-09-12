@@ -5,10 +5,10 @@ const (
 	RootCommand   = "psm"
 	AddCommand    = "add"
 	RemoveCommand = "rm"
-	ListCommand   = "lst"
+	ListCommand   = "ls"
 	CopyCommand   = "cp"
-	UpdateCommand = "updt"
+	UpdateCommand = "up"
 )
 
-var SecretKey string = "rere"
-var SecretFilepath string = "/home/sparsh/.psw/psw.txt"
+var SecretKey string
+var SecretFilepath string

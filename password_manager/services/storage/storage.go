@@ -17,10 +17,10 @@ type StorageService struct {
 	Filepath          string
 }
 
-func GetNewStorageService(passphrase string, filepath string) *StorageService {
+func NewStorageService(passphrase string, filepath string) *StorageService {
 	return &StorageService{
-		EncryptionService: encryption.GetNewEncryptionServiceXOR(passphrase),
-		ParserService:     parser.GetNewParserServiceJSON(),
+		EncryptionService: encryption.NewEncryptionServiceXOR(passphrase),
+		ParserService:     parser.NewParserServiceJSON(),
 		Filepath:          expandPath(filepath),
 	}
 }
