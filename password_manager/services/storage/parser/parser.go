@@ -8,8 +8,8 @@ import (
 type ParserServiceJSON struct {
 }
 
-func GetNewParserServiceJSON() ParserServiceJSON {
-	return ParserServiceJSON{}
+func GetNewParserServiceJSON() *ParserServiceJSON {
+	return &ParserServiceJSON{}
 }
 
 func (p *ParserServiceJSON) Parse(bytes []byte) (map[string]interface{}, error) {
