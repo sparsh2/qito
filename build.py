@@ -1,7 +1,7 @@
 import random
 import os
 
-chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+-<=>?@^_"
+chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#%&()*+-<=>?@^_"
 
 password = ''.join(random.choice(chars) for i in range(12))
 
