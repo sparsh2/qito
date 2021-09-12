@@ -18,8 +18,6 @@ var rootCmd = &cobra.Command{
 	Use:     common.RootCommand,
 	Short:   fmt.Sprintf("%v is a password manager", common.RootCommand),
 	Version: "1.0.0",
-	Run: func(cmd *cobra.Command, args []string) {
-	},
 }
 
 func Execute() {
@@ -30,7 +28,6 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.AddCommand(versionCmd)
 	rootCmd.AddCommand(add.AddCmd)
 	rootCmd.AddCommand(copy.CopyCmd)
 	rootCmd.AddCommand(list.ListCmd)

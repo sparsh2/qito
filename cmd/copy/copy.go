@@ -23,5 +23,7 @@ func copyCommand(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
+	fmt.Printf("copied %v password to clipboard!\n", args[0])
+
 	return nil
 }

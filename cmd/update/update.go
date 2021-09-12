@@ -23,5 +23,7 @@ func updateCommand(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
+	fmt.Printf("updated password for %v successfully!\n", args[0])
+
 	return nil
 }

@@ -3,6 +3,7 @@ package add
 import (
 	"fmt"
 
+	"github.com/manifoldco/promptui"
 	"github.com/sparsh2/qito/common"
 	passwordmanager "github.com/sparsh2/qito/password_manager"
 	passwordgenerator "github.com/sparsh2/qito/password_manager/services/password_generator"
@@ -16,8 +17,8 @@ var AddCmd = &cobra.Command{
 }
 
 func addCommand(c *cobra.Command, args []string) error {
-	if len(args) != 2 && len(args) != 1 {
-		return fmt.Errorf("insufficient arguments")
+	if len(args) != 1 && len(args) != 2 {
+		return fmt.Errorf("incorrect number of arguments arguments, expected 1 or 2, got %d", len(args))
 	}
 
 	options := passwordgenerator.PasswordOptions{}
@@ -34,13 +35,33 @@ func addCommand(c *cobra.Command, args []string) error {
 		fmt.Printf("Special:")
 		fmt.Scanf("%d", &options.Special)
 	} else {
-		password = args[1]
+		validate := func(str string) error {
+			if str == "" {
+				return fmt.Errorf("password cannot be empty")
+			}
+			return nil
+		}
+
+		prompt := promptui.Prompt{
+			Label:    "Password",
+			Validate: validate,
+			Mask:     '*',
+		}
+
+		result, err := prompt.Run()
+
+		if err != nil {
+			return fmt.Errorf("prompt failed %v", err)
+		}
+		password = result
 	}
 
 	err := passwordmanager.PswManager.Add(args[0], password, options)
 	if err != nil {
 		return err
 	}
+
+	fmt.Printf("added %v password to database\n", args[0])
 
 	return nil
 }

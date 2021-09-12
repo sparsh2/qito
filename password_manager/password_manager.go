@@ -1,6 +1,8 @@
 package passwordmanager
 
 import (
+	"fmt"
+
 	"github.com/sparsh2/qito/common"
 	"github.com/sparsh2/qito/password_manager/services/clipboard"
 	passwordgenerator "github.com/sparsh2/qito/password_manager/services/password_generator"
@@ -47,6 +49,10 @@ func (p *PasswordManager) Copy(entity string) error {
 	passwordList, err := p.StorageService.Read()
 	if err != nil {
 		return err
+	}
+
+	if _, ok := passwordList[entity]; !ok {
+		return fmt.Errorf("entry for %v not found in database", entity)
 	}
 
 	err = p.ClipboardService.Copy(passwordList[entity].(string))

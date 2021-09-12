@@ -23,5 +23,7 @@ func removeCommand(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
+	fmt.Printf("deleted %v entry from database\n", args[0])
+
 	return nil
 }

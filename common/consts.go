@@ -2,7 +2,7 @@ package common
 
 // Commands
 const (
-	RootCommand   = "psm"
+	RootCommand   = "qito"
 	AddCommand    = "add"
 	RemoveCommand = "remove"
 	ListCommand   = "list"
